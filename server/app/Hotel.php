@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Hotel extends Model {
 
     protected $table = "hoteles";
+
+    protected $fillable = [
+        'name', 'stars', 'country', 'company'
+    ];
 
     public static function getHotel() {
         

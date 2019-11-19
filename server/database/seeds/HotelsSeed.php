@@ -26,9 +26,11 @@ class HotelsSeed extends Seeder
         //     'country' => 'francia',
         //     'company' => 'iberia'
         // ]);
-        $hotel = factory(App\Hotel::class)->make();
-        $hotel -> save();
-        error_log($hotel);
+        // $hotel = factory(App\Hotel::class)->make();
+        // $hotel -> save();
+        // error_log($hotel);
+        factory(App\Hotel::class, 20)
+            ->create();
         
     }
 }

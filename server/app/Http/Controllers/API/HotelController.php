@@ -14,7 +14,6 @@ class HotelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        error_log('holis');
         return Hotel::all();
     }
 
@@ -25,7 +24,9 @@ class HotelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $hotel = new Hotel($request-> hotels);
+        $hotel-> save();
+        return $hotel;
     }
 
     /**
@@ -35,7 +36,7 @@ class HotelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Hotel $hotel) {
-        //
+        return $hotel;
     }
 
     /**
@@ -56,6 +57,6 @@ class HotelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Hotel $hotel) {
-        //
+        $hotel -> delete();
     }
 }
