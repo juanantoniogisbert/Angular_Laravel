@@ -6,8 +6,7 @@ use App\Hotel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class HotelController extends Controller
-{
+class HotelController extends Controller {
     /**
      * Display a listing of the resource.
      *

@@ -15,12 +15,12 @@
 //     return view('welcome');
 // });
 
-Route::group(['prefix' => 'api'], function(){
-    Route::get('Rocket', 'APIControllers\RocketController@index');
-});
+// Route::group(['prefix' => 'api'], function(){
+//     Route::get('Rocket', 'APIControllers\RocketController@index');
+// });
 
-Route::group(['prefix' => 'api'], function(){
-    // Route::get('Hotel', 'APIControllers\HotelController@index');
-    // Route::get('get/{id}', 'APIControllers\HotelController@getID');
-    Route::resource('hotel', 'API\HotelController');
-});
+// Route::group(['prefix' => 'api'], function(){
+//     // Route::get('Hotel', 'APIControllers\HotelController@index');
+//     // Route::get('get/{id}', 'APIControllers\HotelController@getID');
+//     Route::resource('hotel', 'API\HotelController');
+// });

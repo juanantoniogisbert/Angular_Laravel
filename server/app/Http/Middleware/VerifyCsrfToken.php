@@ -11,6 +11,6 @@ class VerifyCsrfToken extends Middleware {
      * @var array
      */
     protected $except = [
-        'http://localhost/Angular_Laravel/server/public/api/hotel'
+        //
     ];
 }

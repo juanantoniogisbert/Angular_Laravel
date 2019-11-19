@@ -23,3 +23,13 @@ use Illuminate\Http\Request;
 // Route::resource('notes', 'APIControllers\NotesController', ['only' => [
 //     'index', 'store', 'update', 'destroy'
 // ]]);
+
+Route::group(['prefix' => 'v1'], function(){
+    Route::get('Rocket', 'APIControllers\RocketController@index');
+});
+
+Route::group(['prefix' => 'v1'], function(){
+    // Route::get('Hotel', 'APIControllers\HotelController@index');
+    // Route::get('get/{id}', 'APIControllers\HotelController@getID');
+    Route::resource('hotel', 'API\HotelController');
+});
