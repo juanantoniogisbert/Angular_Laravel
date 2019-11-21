@@ -24,12 +24,17 @@ use Illuminate\Http\Request;
 //     'index', 'store', 'update', 'destroy'
 // ]]);
 
-Route::group(['prefix' => 'v1'], function(){
-    Route::get('Rocket', 'APIControllers\RocketController@index');
-});
+// Route::group(['prefix' => 'v1'], function(){
+//     Route::get('Rocket', 'APIControllers\RocketController@index');
+// });
 
 Route::group(['prefix' => 'v1'], function(){
     // Route::get('Hotel', 'APIControllers\HotelController@index');
     // Route::get('get/{id}', 'APIControllers\HotelController@getID');
     Route::resource('hotel', 'API\HotelController');
+
+    Route::get('tags', function () {
+        error_log('hola');
+        return json_encode(['hola', 'pipo']);
+    });
 });
