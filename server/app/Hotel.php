@@ -13,24 +13,24 @@ class Hotel extends Model {
         'name', 'stars', 'country', 'company'
     ];
 
-    public static function getHotel() {
+    // public static function getHotel() {
         
-        // $id = Auth::user()->id;
-        $res = DB::table('hoteles')
-            ->select('*')
-            // ->where('id', '=', $id)
-            ->get();
+    //     // $id = Auth::user()->id;
+    //     $res = DB::table('hoteles')
+    //         ->select('*')
+    //         // ->where('id', '=', $id)
+    //         ->get();
         
-        return $res;
-    }
+    //     return $res;
+    // }
 
-    public static function getID($id) {
+    // public static function getID($id) {
         
-        $res = DB::table('hoteles')
-            ->select('*')
-            ->where('id', '=', $id)
-            ->get();
+    //     $res = DB::table('hoteles')
+    //         ->select('*')
+    //         ->where('id', '=', $id)
+    //         ->get();
 
-        return $res;
-    }
+    //     return $res;
+    // }
 }
