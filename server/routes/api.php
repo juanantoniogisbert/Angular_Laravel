@@ -31,7 +31,8 @@ use Illuminate\Http\Request;
 Route::group(['prefix' => 'v1'], function(){
     // Route::get('Hotel', 'APIControllers\HotelController@index');
     // Route::get('get/{id}', 'APIControllers\HotelController@getID');
-    Route::resource('hotel', 'API\HotelController');
+    Route::resource('hotel', 'API\HotelController')->except(['show']);
+    Route::get('hotel/{slug}', 'API\HotelController@findSlug');
 
     Route::get('tags', function () {
         error_log('hola');

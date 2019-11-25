@@ -15,6 +15,7 @@ class Hotels extends Migration
     {
         Schema::create('hoteles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('slug')->unique();
             $table->string('name');
             $table->string('stars');
             $table->string('country');
@@ -30,6 +31,6 @@ class Hotels extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('hoteles');
     }
 }

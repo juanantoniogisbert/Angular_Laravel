@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Hotel;
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class HotelController extends Controller {
+class HotelController extends ApiController {
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +24,7 @@ class HotelController extends Controller {
      */
     public function store(Request $request) {
         $hotel = new Hotel($request-> hotels);
+        $hotel->slug = $this->generateSlug($hotel->name);
         $hotel-> save();
         return $hotel;
     }
@@ -36,6 +37,10 @@ class HotelController extends Controller {
      */
     public function show(Hotel $hotel) {
         return $hotel;
+    }
+
+    public function findSlug($slug) {
+        return Hotel::query()->where('slug', $slug)->get();
     }
 
     /**
