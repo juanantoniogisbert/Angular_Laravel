@@ -24,24 +24,24 @@ export class HomeComponent implements OnInit {
   tagsLoaded = false;
 
   ngOnInit() {
-    this.userService.isAuthenticated.subscribe(
-      (authenticated) => {
-        this.isAuthenticated = authenticated;
+    // this.userService.isAuthenticated.subscribe(
+    //   (authenticated) => {
+    //     this.isAuthenticated = authenticated;
 
-        // set the article list accordingly
-        if (authenticated) {
-          this.setListTo('feed');
-        } else {
-          this.setListTo('all');
-        }
-      }
-    );
+    //     // set the article list accordingly
+    //     if (authenticated) {
+    //       this.setListTo('feed');
+    //     } else {
+    //       this.setListTo('all');
+    //     }
+    //   }
+    // );
 
-    this.tagsService.getAll()
-    .subscribe(tags => {
-      this.tags = tags;
-      this.tagsLoaded = true;
-    });
+    // this.tagsService.getAll()
+    // .subscribe(tags => {
+    //   this.tags = tags;
+    //   this.tagsLoaded = true;
+    // });
   }
 
   setListTo(type: string = '', filters: Object = {}) {
