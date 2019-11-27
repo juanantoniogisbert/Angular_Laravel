@@ -18,8 +18,9 @@ export class HotelsService {
     }
 
     getSlug(slug): Observable<string> {
-        console.log(slug);
         return this.apiService.get('/hotel/' + slug)
-        .pipe(map(data => data.slug));
+        .pipe(map(data => {
+            return data;
+        }));
     }
 }

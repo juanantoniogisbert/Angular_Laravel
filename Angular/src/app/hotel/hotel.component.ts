@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {HotelsService} from '../core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import{
+  Hotel
+} from '../core';
 
 @Component({
   selector: 'app-hotel',
@@ -8,10 +12,17 @@ import {HotelsService} from '../core';
 })
 export class HotelComponent implements OnInit {
 
+  hotel: Hotel;
+
   constructor(
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
-
+    this.route.data.subscribe(
+      data => {
+        this.hotel = data.hotel[0];
+      }
+    )
   }
 }

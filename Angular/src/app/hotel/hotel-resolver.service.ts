@@ -7,11 +7,10 @@ import { catchError } from 'rxjs/operators';
 import { Hotel } from '../core/models/hotel.model';
 
 @Injectable()
-export class HotelResolver implements Resolve <Hotel> {
+export class HotelResolver implements Resolve<Hotel> {
   constructor(
     private hotelsService: HotelsService,
-    private router: Router,
-    // private userService: UserService
+    private router: Router
   ) {}
 
   resolve(
