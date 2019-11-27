@@ -16,4 +16,10 @@ export class HotelsService {
             return data
         }));
     }
+
+    getSlug(slug): Observable<string> {
+        console.log(slug);
+        return this.apiService.get('/hotel/' + slug)
+        .pipe(map(data => data.slug));
+    }
 }

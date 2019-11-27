@@ -2,6 +2,7 @@ import { Hotel } from './hotel.model';
 
 export interface Hotel {
   name: string;
+  slug: string;
   stars: string;
   country: string;
   company: string;
