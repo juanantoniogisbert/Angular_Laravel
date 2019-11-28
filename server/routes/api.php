@@ -34,8 +34,8 @@ Route::group(['prefix' => 'v1'], function(){
     Route::resource('hotel', 'API\HotelController')->except(['show']);
     Route::get('hotel/{slug}', 'API\HotelController@findSlug');
 
-    Route::get('tags', function () {
-        error_log('hola');
-        return json_encode(['hola', 'pipo']);
-    });
+    // Route::get('tags', function () {
+    //     // error_log('hola');
+    //     return json_encode(['hola', 'pipo']);
+    // });
 });
