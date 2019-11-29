@@ -17,4 +17,22 @@ class ApiController extends Controller {
 
         return Str::slug($key.'-'.$randomString);
     }
+
+    protected function respondWithTransformer($data, $statusCode = 200, $headers = []) {
+        $this->checkTransformer();
+
+        if ($data instanceof Collection) {
+            $data = $this->transformer->collection($data);
+        } else {
+            $data = $this->transformer->item($data);
+        }
+
+        return $this->respond($data, $statusCode, $headers);
+    }
+
+    private function checkTransformer() {
+        // if ($this->transformer === null || ! $this->transformer instanceof Transformer) {
+        //     throw new Exception('Invalid data transformer.');
+        // }
+    }
 }

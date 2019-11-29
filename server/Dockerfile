@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
     curl
 RUN  apt-get install -y default-mysql-client
 
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 

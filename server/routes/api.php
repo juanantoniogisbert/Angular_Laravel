@@ -12,30 +12,20 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// Route::middleware('api')->post('/register' , 'APIControllers\AuthController@register');
-// Route::middleware('api')->post('/login' , 'APIControllers\AuthController@login');
 
-// Route::group(['middleware' => ['auth:api']], function () {
-//     Route::get('/rocket', 'APIControllers\RocketController@index');
-//     Route::post('/rocket', 'APIControllers\RocketController@favorites');
-// });
+// Route::post('users/login', 'API\AuthController@login');
+Route::post('users', 'API\AuthController@register');
 
-// Route::resource('notes', 'APIControllers\NotesController', ['only' => [
-//     'index', 'store', 'update', 'destroy'
-// ]]);
+// Route::get('user', 'UserController@index');
+// Route::match(['put', 'patch'], 'user', 'UserController@update');
 
-// Route::group(['prefix' => 'v1'], function(){
-//     Route::get('Rocket', 'APIControllers\RocketController@index');
-// });
+// Route::get('profiles/{user}', 'ProfileController@show');
+// Route::post('profiles/{user}/follow', 'ProfileController@follow');
+// Route::delete('profiles/{user}/follow', 'ProfileController@unFollow');
 
 Route::group(['prefix' => 'v1'], function(){
     // Route::get('Hotel', 'APIControllers\HotelController@index');
     // Route::get('get/{id}', 'APIControllers\HotelController@getID');
     Route::resource('hotel', 'API\HotelController')->except(['show']);
     Route::get('hotel/{slug}', 'API\HotelController@findSlug');
-
-    // Route::get('tags', function () {
-    //     // error_log('hola');
-    //     return json_encode(['hola', 'pipo']);
-    // });
 });

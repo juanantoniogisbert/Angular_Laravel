@@ -6,7 +6,7 @@ import{
 } from '../core';
 
 @Component({
-  selector: 'app-hotel',
+  // selector: 'app-hotel',
   templateUrl: './hotel.component.html',
   styleUrls: ['./hotel.component.css']
 })

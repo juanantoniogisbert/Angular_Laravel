@@ -13,7 +13,7 @@ class HotelController extends Controller {
     }
     
     public function index() {
-        error_log('axant');
+        // error_log('axant');
         $result = Hotel::getHotel();
         return response($result);
     }
