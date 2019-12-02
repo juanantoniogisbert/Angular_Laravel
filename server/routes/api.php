@@ -13,8 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('users/login', 'API\AuthController@login');
-Route::post('users', 'API\AuthController@register');
+
 
 // Route::get('user', 'UserController@index');
 // Route::match(['put', 'patch'], 'user', 'UserController@update');
@@ -28,4 +27,6 @@ Route::group(['prefix' => 'v1'], function(){
     // Route::get('get/{id}', 'APIControllers\HotelController@getID');
     Route::resource('hotel', 'API\HotelController')->except(['show']);
     Route::get('hotel/{slug}', 'API\HotelController@findSlug');
+    Route::post('users/login', 'API\AuthController@login');
+    Route::post('users/', 'API\AuthController@register');
 });
