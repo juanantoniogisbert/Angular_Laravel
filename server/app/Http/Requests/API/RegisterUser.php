@@ -11,8 +11,7 @@ class RegisterUser extends ApiRequest
      *
      * @return bool
      */
-    public function validationData()
-    {
+    public function validationData() {
         return $this->get('user') ?: [];
     }
 

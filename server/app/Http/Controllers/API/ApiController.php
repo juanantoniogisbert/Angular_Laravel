@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ApiController extends Controller {
+
+    protected $tansformer = null;
+
     public function generateSlug($key) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);

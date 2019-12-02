@@ -11,9 +11,8 @@ class LoginUser extends ApiRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return true;
+    public function validationData() {
+        return $this->get('user') ?: [];
     }
 
     /**

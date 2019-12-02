@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Requests\API\LoginUser;
 use App\Http\Requests\API\RegisterUser;
 use App\User;
 // use Illuminate\Http\Request;
 use App\RealWorld\Transformers\UserTransformer;
+use Auth;
 
 class AuthController extends ApiController {
 
@@ -27,5 +29,16 @@ class AuthController extends ApiController {
         ]);
 
         return $this->respondWithTransformer($user);
+    }
+
+    public function login(LoginUser $request) {
+        $credentials = $request->only('user.email', 'user.password');
+        $credentials = $credentials['user'];
+
+        if (! Auth::once($credentials)) {
+            return $this->respondFailedLogin();
+        }
+
+        return $this->respondWithTransformer(auth()->user());
     }
 }
