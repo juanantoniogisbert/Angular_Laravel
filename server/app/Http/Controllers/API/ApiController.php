@@ -38,4 +38,16 @@ class ApiController extends Controller {
         //     throw new Exception('Invalid data transformer.');
         // }
     }
+
+    protected function respond($data, $statusCode = 200, $headers = []) {
+        return response()->json($data, $statusCode, $headers);
+    }
+
+    protected function respondFailedLogin() {
+        return $this->respond([
+            'errors' => [
+                'email or password' => 'is invalid',
+            ]
+        ], 422);
+    }
 }

@@ -6,16 +6,10 @@ use App\Http\Controllers\ApiController;
 use App\Http\Requests\API\LoginUser;
 use App\Http\Requests\API\RegisterUser;
 use App\User;
-// use Illuminate\Http\Request;
 use App\RealWorld\Transformers\UserTransformer;
 use Auth;
 
 class AuthController extends ApiController {
-
-    protected function respond($data, $statusCode = 200, $headers = []) {
-        return response()->json($data, $statusCode, $headers);
-    }
-
 
     public function __construct(UserTransformer $transformer) {
         $this->transformer = $transformer;
