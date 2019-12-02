@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ApiController extends Controller {
+    
     public function generateSlug($key) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -34,5 +35,17 @@ class ApiController extends Controller {
         // if ($this->transformer === null || ! $this->transformer instanceof Transformer) {
         //     throw new Exception('Invalid data transformer.');
         // }
+    }
+
+    protected function respond($data, $statusCode = 200, $headers = []) {
+        return response()->json($data, $statusCode, $headers);
+    }
+
+    protected function respondFailedLogin() {
+        return $this->respond([
+            'errors' => [
+                'email or password' => 'is invalid',
+            ]
+        ], 422);
     }
 }

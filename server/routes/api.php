@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::post('users/login', 'API\AuthController@login');
+Route::post('users/login', 'API\AuthController@login');
 Route::post('users', 'API\AuthController@register');
 
 // Route::get('user', 'UserController@index');
