@@ -29,4 +29,10 @@ Route::group(['prefix' => 'v1'], function(){
     Route::get('hotel/{slug}', 'API\HotelController@findSlug');
     Route::post('users/login', 'API\AuthController@login');
     Route::post('users/', 'API\AuthController@register');
+    Route::get('user', 'API\UserController@index');
+
+    Route::get('login/{provider}', 'AuthController@auth')->name('redirectSocialLite')->where(['provider' => 'google']);
+    Route::get('login/{provider}/callback', 'AuthController@sociallogin')->where(['provider' => 'google']);
+    Route::get('loginsocial', 'AuthController@loginsocial');
+
 });

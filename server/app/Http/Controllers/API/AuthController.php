@@ -35,4 +35,38 @@ class AuthController extends ApiController {
 
         return $this->respondWithTransformer(auth()->user());
     }
+
+    public function auth($provider) {
+        return $this->socialLogin->authenticate($provider);
+    }
+
+    public function sociallogin($provider) {
+        try {
+            $user = $this->socialLogin->login($provider);
+            $valUser = User::where('email', '=', $user->email)->first();
+            if($valUser === null){
+                $user = User::create([
+                    'username' => $user->name,
+                    'email' => $user->email,
+                    'password' => $user->id,
+                    'followers' => 0,
+                    'image' => $user->avatar
+                ]);
+            }
+            
+            Storage::disk('local')->put('file.txt',$this->respondWithTransformer($valUser));
+            return redirect()->to('http://localhost:4200/sociallogin');
+        } catch (SocialAuthException $e) {
+            echo 'Not User';
+        }
+    }
+
+    public function loginsocial(Request $request) {
+        $exists = Storage::disk('local')->exists('file.txt');
+        if($exists){
+            $user = Storage::disk('local')->get('file.txt');
+            Storage::disk('local')->delete('file.txt');
+        }
+        return explode('GMT',$user)[1];
+    }
 }
