@@ -4,15 +4,16 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use JWTAuth;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 // use Tymon\JWTAuth\Facades\JWTAuth;
 
 class User extends Authenticatable implements JWTSubject {
     use Notifiable;
 
     protected $fillable = [
-        'username', 'email', 'password', 'remember_token', 'bio', 'image'
+        'username', 'email', 'password', 'remember_token', 'bio', 'image', 'userSocial'
     ];
 
     protected $hidden = [
