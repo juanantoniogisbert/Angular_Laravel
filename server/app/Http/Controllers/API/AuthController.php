@@ -7,7 +7,7 @@ use App\Http\Requests\API\LoginUser;
 use App\Http\Requests\API\RegisterUser;
 use App\User;
 use App\RealWorld\Transformers\UserTransformer;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends ApiController {
@@ -76,7 +76,16 @@ class AuthController extends ApiController {
         return Socialite::driver($provider)->redirect();
     }
 
-    public function handleProviderCallback() {
-        $user = Socialite::driver('github')->user();
+    public function handleProviderCallback($provider) {
+        
+        $socialUserInfo = Socialite::driver($provider)->user();
+
+        $user = User::firstOrCreate([
+            'username' => $socialUserInfo->getNickname(),
+            'email' => $socialUserInfo->getEmail(),
+            'userSocial' => $socialUserInfo->getId()
+        ]);
+
+        return response($user);
     }
 }

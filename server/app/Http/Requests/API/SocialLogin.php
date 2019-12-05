@@ -11,6 +11,7 @@ class SocialLogin {
 
     public function login($provider) {
         $socialUserInfo = Socialite::driver($provider)->stateless()->user();
+
         return $socialUserInfo;
     }
 }
